@@ -1,9 +1,11 @@
 import { Button, TextField } from "@mui/material";
-import { signOut } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
-import { auth } from "../../serverless/firebase";
+import { db } from "../../serverless/firebase";
+import {useSession} from 'next-auth/react';
 
 function registerlabor() {
     const router = useRouter();
@@ -14,25 +16,32 @@ function registerlabor() {
     const [preferredLang, setPreferredLang] = useState("");
     const [education, setEducation] = useState("");
 
+    const {data: session} = useSession();
+
     const submitForm = async (e: any) => {
         e.preventDefault();
-        // await setDoc(doc(db, `laborors/${user?.uid}`), {
-        //     email: user?.email,
-        //     name: name,
-        //     place: place,
-        //     skills: skills,
-        //     preferredLang: preferredLang,
-        //     education: education,
-        //     openForWork: false
-        // });
-        router.push("/dashboard");
+        await setDoc(doc(db, `users/${session?.user?.email}`), {
+            email: session?.user?.email,
+            type: "laboror",
+            name: name,
+            place: place,
+            skills: skills,
+            preferredLang: preferredLang,
+            education: education,
+            openForWork: false
+        });
+        router.push("/");
     };
+    const signout = () => {
+        signOut();
+        router.push('/')
+    }
 
     return (
         <div className="w-screen h-screen space-y-6">
             <h1 className="text-5xl text-center">Enter your details</h1>
             <h2 className="text-center text-3xl">Labor registration form</h2>
-            <Button onClick={() => signOut(auth)}>Signout</Button>
+            <Button onClick={() => signout()}>Signout</Button>
             <form
                 className="flex flex-col space-y-4 w-[80%] mx-auto"
                 onSubmit={submitForm}

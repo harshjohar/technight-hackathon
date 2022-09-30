@@ -1,6 +1,8 @@
 import { signIn, getSession, getProviders } from "next-auth/react";
 import { SiGoogle } from "react-icons/si";
 import Head from "next/head";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../serverless/firebase";
 
 export default function Login({ providers, callbackUrl }: any) {
     return (
@@ -42,12 +44,25 @@ export async function getServerSideProps(context: any) {
         const { req } = context;
         const session = await getSession({ req });
         if (session) {
-            return {
-                redirect: {
-                    destination: "/",
-                    permanent: false,
-                },
-            };
+            const docRef = doc(db, `users/${session.user?.email}`);
+            const userType = (await getDoc(docRef)).data()?.type;
+            console.log(userType);
+            if(userType) {
+                return {
+                    redirect: {
+                        destination: "/",
+                        permanent: false,
+                    },
+                };
+            }
+            else {
+                return {
+                    redirect: {
+                        destination: '/auth/filldetails',
+                        permanent: false,
+                    }
+                }
+            }
         }
     } catch (e) {
         console.error(e);

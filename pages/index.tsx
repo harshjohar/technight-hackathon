@@ -4,6 +4,8 @@ import { signIn, useSession, getSession } from "next-auth/react";
 import Layout from "../components/common/Layout";
 import Landing from "../components/screens/Landing";
 import Dashboard from "../components/screens/Dashboard";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../serverless/firebase";
 
 const Home: NextPage = ({ loggedIn }: any) => {
     return (
@@ -27,6 +29,16 @@ export async function getServerSideProps(context: any) {
         const { req } = context;
         const session = await getSession({ req });
         if (session) {
+            const docRef = doc(db, `users/${session.user?.email}`);
+            const userType = (await getDoc(docRef)).data()?.type;
+            if(!userType) {
+                return {
+                    redirect: {
+                        destination: '/auth/filldetails',
+                        permanent: false,
+                    }
+                }
+            }
             return {
                 props: {
                     loggedIn: true,

@@ -2,19 +2,11 @@ import { Button, TextField } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { auth, db } from "../../serverless/firebase";
-
+import { useSession } from "next-auth/react";
 function registercontractor() {
-    const [user] = useAuthState(auth);
-    const router = useRouter();
-    useEffect(() => {
-        if (!user) {
-            router.push("/auth/signin");
-        }
-    }, [user]);
     const [name, setName] = useState("");
     const [place, setPlace] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -22,10 +14,13 @@ function registercontractor() {
     const [preferredLang, setPreferredLang] = useState("");
     const [education, setEducation] = useState("");
 
+    const { data: session } = useSession();
+    const router = useRouter();
     const submitForm = async (e: any) => {
         e.preventDefault();
-        await setDoc(doc(db, `employers/${user?.uid}`), {
-            email: user?.email,
+        await setDoc(doc(db, `users/${session?.user?.email}`), {
+            email: session?.user?.email,
+            type: "employer",
             name: name,
             place: place,
             skills: skills,
@@ -33,7 +28,7 @@ function registercontractor() {
             education: education,
             openForWork: false,
         });
-        router.push("/dashboard");
+        router.push("/");
     };
     return (
         <div className="w-screen h-screen space-y-6">
