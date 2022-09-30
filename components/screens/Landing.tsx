@@ -1,20 +1,29 @@
 import React from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import Head from "next/head";
 
 function Landing() {
     return (
         <>
+            <Head>
+                <title>ExSolution</title>
+                <link rel="icon" href="/assets/favicon/favicon.ico" />
+            </Head>
             <header>
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <Link href="/" className="flex items-center">
-                            <img
-                                src="logo.png"
-                                className="mr-3 h-10 sm:h-9"
-                                alt="Logo"
-                            />
-                            {/* <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Exsolution</span> */}
+                            <>
+                                <img
+                                    src="logo.png"
+                                    className="mr-3 h-20 object-contain sm:h-9"
+                                    alt="Logo"
+                                />
+                                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                                    Exsolution
+                                </span>
+                            </>
                         </Link>
                         <div className="flex items-center lg:order-2">
                             <button
@@ -35,7 +44,8 @@ function Landing() {
                             Leading Labor to Jobs Nationwide
                         </h1>
                         <p className="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                            The best online job portal connecting laborers and contractors throughout India.
+                            The best online job portal connecting laborers and
+                            contractors throughout India.
                         </p>
                         <button
                             className="inline-flex justify-center items-center py-3 px-5 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
@@ -58,8 +68,9 @@ function Landing() {
                     </div>
                     <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
                         <img
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
+                            src="hero.jpg"
                             alt="mockup"
+                            className="h-[550px] object-contain rounded-xl shadow-gray-900 shadow-2xl"
                         />
                     </div>
                 </div>

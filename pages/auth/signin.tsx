@@ -6,7 +6,7 @@ import { db } from "../../serverless/firebase";
 
 export default function Login({ providers, callbackUrl }: any) {
     return (
-        <main className="flex flex-col items-center h-screen space-y-8 justify-center text-black">
+        <main className="flex flex-col items-center h-screen space-y-8 justify-center text-black bg-gray-900">
             <Head>
                 <title>Sign In | TechNight</title>
             </Head>
@@ -14,9 +14,9 @@ export default function Login({ providers, callbackUrl }: any) {
                 <img
                     src="/logo.png"
                     alt="Technight"
-                    className="w-32 h-32"
+                    className="h-32 object-contain"
                 />
-                <div className="text-3xl">
+                <div className="text-3xl text-white">
                     <p className="inline"> Sign in to </p>
                     <p className="font-bold text-primary inline">ExSolution</p>
                 </div>
@@ -24,12 +24,12 @@ export default function Login({ providers, callbackUrl }: any) {
             <div className="p-5 flex flex-col space-y-5">
                 <div className="flex flex-col space-y-4">
                     <button
-                        className="bg-blue-900 font-semibold text-white text-base px-3 py-2 hover:opacity-90 focus:outline-none focus:ring-2 ring-blue-300 flex flex-row items-center justify-center rounded-lg"
+                        className="bg-white text-gray-900 font-semibold  text-base px-3 py-2 hover:opacity-90 focus:outline-none focus:ring-2 ring-blue-300 flex flex-row items-center justify-center rounded-lg"
                         onClick={() =>
                             signIn(providers.google.id, { callbackUrl })
                         }
                     >
-                        <SiGoogle className="text-white w-5 h-5 mr-2" />
+                        <SiGoogle className="text-gray-900 w-5 h-5 mr-2" />
                         Sign in with Google
                     </button>
                 </div>

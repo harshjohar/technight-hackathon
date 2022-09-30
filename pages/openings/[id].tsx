@@ -6,6 +6,7 @@ import { Button, TextField } from "@mui/material";
 import { AiOutlineSend } from "react-icons/ai";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../serverless/firebase";
+import Head from "next/head";
 
 function Opening() {
     const [name, setName] = useState("");
@@ -35,6 +36,10 @@ function Opening() {
     };
     return (
         <div>
+            <Head>
+                <title>Openings</title>
+                <link rel="icon" href="/assets/favicon/favicon.ico" />
+            </Head>
             <NavbarLabor />
             <div className="space-y-5 p-6">
                 <h1 className="text-5xl text-center">Apply</h1>

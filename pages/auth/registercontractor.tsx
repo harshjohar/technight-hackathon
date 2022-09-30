@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { auth, db } from "../../serverless/firebase";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 function registercontractor() {
     const [name, setName] = useState("");
     const [place, setPlace] = useState("");
@@ -32,6 +33,10 @@ function registercontractor() {
     };
     return (
         <div className="w-screen h-screen space-y-6">
+            <Head>
+                <title>Register</title>
+                <link rel="icon" href="/assets/favicon/favicon.ico" />
+            </Head>
             <h1 className="text-5xl text-center">Enter your details</h1>
             <h2 className="text-center text-3xl">Employer registration form</h2>
             <Button onClick={() => signOut(auth)}>Signout</Button>

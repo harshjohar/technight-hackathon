@@ -6,6 +6,7 @@ import { useDocument } from "react-firebase-hooks/firestore";
 import NavbarEmployer from "../../components/common/NavbarEmployer";
 import { db } from "../../serverless/firebase";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 
 function Applications() {
     const router = useRouter();
@@ -26,6 +27,10 @@ function Applications() {
     const reject = () => {};
     return (
         <div>
+            <Head>
+                <title>Application</title>
+                <link rel="icon" href="/assets/favicon/favicon.ico" />
+            </Head>
             <NavbarEmployer />
             <div className="shadow-lg w-[60%] mx-auto p-10">
                 <p>{application?.data()?.["name"]}</p>

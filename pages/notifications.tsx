@@ -1,4 +1,5 @@
 import { collection } from "firebase/firestore";
+import Head from "next/head";
 import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Nav from "../components/common/NavbarLabor";
@@ -9,6 +10,10 @@ function notifications() {
     return (
         <div>
             <Nav />
+            <Head>
+                <title>Notifications</title>
+                <link rel="icon" href="/assets/favicon/favicon.ico" />
+            </Head>
             <div className="w-[60%] mx-auto">
                 <h1 className="text-4xl">Notifications</h1>
                 {notifs?.docs.map((notif) => {

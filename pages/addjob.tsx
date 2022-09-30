@@ -5,6 +5,7 @@ import { AiOutlineSend } from "react-icons/ai";
 import { db } from "../serverless/firebase";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function addjob() {
     const [title, setTitle] = useState("");
@@ -34,6 +35,10 @@ function addjob() {
     };
     return (
         <div className="space-y-6">
+            <Head>
+                <title>Add Job</title>
+                <link rel="icon" href="/assets/favicon/favicon.ico" />
+            </Head>
             <h1 className="text-5xl text-center">Add Job</h1>
             <h2 className="text-center text-3xl">
                 Add details of the job offered
