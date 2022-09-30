@@ -12,6 +12,7 @@
     "@mui/material": "^5.10.7",
     "firebase": "^9.10.0",
     "next": "latest",
+    "next-auth": "^4.12.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-firebase-hooks": "^5.0.3",

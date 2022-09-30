@@ -1,22 +1,11 @@
-import { onAuthStateChanged } from "firebase/auth";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../serverless/firebase";
+import { signIn, useSession, getSession } from "next-auth/react";
+import Layout from "../components/common/Layout";
+import Landing from "../components/screens/Landing";
+import Dashboard from "../components/screens/Dashboard";
 
-const Home: NextPage = () => {
-    const [user] = useAuthState(auth);
-    const router = useRouter();
-    useEffect(() => {
-        if (user) {
-            router.push("/dashboard");
-        }
-        else {
-          router.push('/auth/signin')
-        }
-    }, [user]);
+const Home: NextPage = ({ loggedIn }: any) => {
     return (
         <div className="">
             <Head>
@@ -24,39 +13,33 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <p>
-              loading
-            </p>
+            <Layout title="technight">
+                {loggedIn ? <Dashboard /> : <Landing />}
+            </Layout>
         </div>
     );
 };
 
 export default Home;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: any) {
     try {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                return {
-                    redirect: {
-                        destination: "/dashboard",
-                        permanent: false,
-                    },
-                };
-            }
-            else {
-              return {
-                redirect: {
-                    destination: "/auth/signin",
-                    permanent: false,
+        const { req } = context;
+        const session = await getSession({ req });
+        if (session) {
+            return {
+                props: {
+                    loggedIn: true,
                 },
             };
-            }
-        });
-        return {
-            props: {},
-        };
+        }
     } catch (e) {
         console.error(e);
     }
+
+    return {
+        props: {
+            loggedIn: false,
+        },
+    };
 }

@@ -1,20 +1,12 @@
 import { Button, TextField } from "@mui/material";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
-import { auth, db } from "../../serverless/firebase";
+import { auth } from "../../serverless/firebase";
 
 function registerlabor() {
-    const [user] = useAuthState(auth);
     const router = useRouter();
-    useEffect(() => {
-        if (!user) {
-            router.push("/auth/signin");
-        }
-    }, [user]);
     const [name, setName] = useState("");
     const [place, setPlace] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -24,16 +16,16 @@ function registerlabor() {
 
     const submitForm = async (e: any) => {
         e.preventDefault();
-        await setDoc(doc(db, `laborors/${user?.uid}`), {
-            email: user?.email,
-            name: name,
-            place: place,
-            skills: skills,
-            preferredLang: preferredLang,
-            education: education,
-            openForWork: false
-        });
-        router.push('/dashboard');
+        // await setDoc(doc(db, `laborors/${user?.uid}`), {
+        //     email: user?.email,
+        //     name: name,
+        //     place: place,
+        //     skills: skills,
+        //     preferredLang: preferredLang,
+        //     education: education,
+        //     openForWork: false
+        // });
+        router.push("/dashboard");
     };
 
     return (
@@ -94,28 +86,3 @@ function registerlabor() {
 }
 
 export default registerlabor;
-
-export async function getServerSideProps() {
-    try {
-        onAuthStateChanged(auth, async (user) => {
-            if (!user) {
-                return {
-                    redirect: {
-                        destination: "/auth/signin",
-                        permanent: false,
-                    },
-                };
-            }
-            else {
-                const userDoc = await getDoc(doc(db, `laborors/${user.uid}`));
-                console.log(userDoc);
-            }
-        });
-        console.log("first");
-        return {
-            props: {},
-        };
-    } catch (e) {
-        console.error(e);
-    }
-}
