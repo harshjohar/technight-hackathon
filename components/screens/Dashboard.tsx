@@ -1,11 +1,14 @@
 import React from "react";
 import { signOut } from "next-auth/react";
+import { Button } from "@mui/material";
+import NavbarLabor from "../common/NavbarLabor";
+import NavbarEmployer from "../common/NavbarEmployer";
 
-function Dashboard() {
+function Dashboard({ type }: { type: string }) {
     return (
         <div>
-            Dashboard
-            <button onClick={() => signOut()}>SignOUT MF</button>
+            {type == "employer" ? <NavbarEmployer /> : <NavbarLabor />}
+            <Button onClick={() => signOut()}>SignOUT MF</Button>
         </div>
     );
 }

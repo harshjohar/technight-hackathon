@@ -13,7 +13,6 @@ function Layout({ title, children }: layout) {
                 <title>{title}</title>
                 <link rel="icon" href="/assets/favicon/favicon.ico" />
             </Head>
-            <Navbar />
             {children}
         </div>
     );

@@ -7,7 +7,7 @@ import Dashboard from "../components/screens/Dashboard";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../serverless/firebase";
 
-const Home: NextPage = ({ loggedIn }: any) => {
+const Home: NextPage = ({ loggedIn, userType }: any) => {
     return (
         <div className="">
             <Head>
@@ -16,7 +16,7 @@ const Home: NextPage = ({ loggedIn }: any) => {
             </Head>
 
             <Layout title="technight">
-                {loggedIn ? <Dashboard /> : <Landing />}
+                {loggedIn ? <Dashboard type={userType} /> : <Landing />}
             </Layout>
         </div>
     );
@@ -42,6 +42,7 @@ export async function getServerSideProps(context: any) {
             return {
                 props: {
                     loggedIn: true,
+                    userType
                 },
             };
         }

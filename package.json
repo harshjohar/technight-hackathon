@@ -8,8 +8,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@headlessui/react": "^1.7.3",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.7",
+    "antd": "^4.23.3",
     "firebase": "^9.10.0",
     "next": "latest",
     "next-auth": "^4.12.2",
