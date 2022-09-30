@@ -13,6 +13,9 @@ const Home: NextPage = () => {
         if (user) {
             router.push("/dashboard");
         }
+        else {
+          router.push('/auth/signin')
+        }
     }, [user]);
     return (
         <div className="">
@@ -21,7 +24,9 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <p>hehe</p>
+            <p>
+              loading
+            </p>
         </div>
     );
 };
@@ -38,6 +43,14 @@ export async function getServerSideProps() {
                         permanent: false,
                     },
                 };
+            }
+            else {
+              return {
+                redirect: {
+                    destination: "/auth/signin",
+                    permanent: false,
+                },
+            };
             }
         });
         return {

@@ -1,13 +1,13 @@
 import { Button, TextField } from "@mui/material";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { AiOutlineSend } from "react-icons/ai";
 import { auth, db } from "../../serverless/firebase";
 
-function registerlabor() {
+function registercontractor() {
     const [user] = useAuthState(auth);
     const router = useRouter();
     useEffect(() => {
@@ -24,22 +24,21 @@ function registerlabor() {
 
     const submitForm = async (e: any) => {
         e.preventDefault();
-        await setDoc(doc(db, `laborors/${user?.uid}`), {
+        await setDoc(doc(db, `employers/${user?.uid}`), {
             email: user?.email,
             name: name,
             place: place,
             skills: skills,
             preferredLang: preferredLang,
             education: education,
-            openForWork: false
+            openForWork: false,
         });
-        router.push('/dashboard');
+        router.push("/dashboard");
     };
-
     return (
         <div className="w-screen h-screen space-y-6">
             <h1 className="text-5xl text-center">Enter your details</h1>
-            <h2 className="text-center text-3xl">Labor registration form</h2>
+            <h2 className="text-center text-3xl">Employer registration form</h2>
             <Button onClick={() => signOut(auth)}>Signout</Button>
             <form
                 className="flex flex-col space-y-4 w-[80%] mx-auto"
@@ -93,29 +92,4 @@ function registerlabor() {
     );
 }
 
-export default registerlabor;
-
-export async function getServerSideProps() {
-    try {
-        onAuthStateChanged(auth, async (user) => {
-            if (!user) {
-                return {
-                    redirect: {
-                        destination: "/auth/signin",
-                        permanent: false,
-                    },
-                };
-            }
-            else {
-                const userDoc = await getDoc(doc(db, `laborors/${user.uid}`));
-                console.log(userDoc);
-            }
-        });
-        console.log("first");
-        return {
-            props: {},
-        };
-    } catch (e) {
-        console.error(e);
-    }
-}
+export default registercontractor;
