@@ -3,9 +3,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../serverless/firebase";
-import { useSession } from "next-auth/react";
+import {AiOutlineStar} from 'react-icons/ai';
 function Labourer() {
-    const { data: session } = useSession();
     const [jobs] = useCollection(
         query(collection(db, "jobs"), orderBy("timestamp"))
     );
@@ -16,9 +15,10 @@ function Labourer() {
             {jobs?.docs?.map((job) => {
                 return (
                     <div
-                        className="shadow-md w-full rounded-md p-8 hover:shadow-2xl cursor-pointer bg-blue-100"
+                        className="relative shadow-md w-full rounded-md p-8 hover:shadow-2xl cursor-pointer bg-blue-100"
                         onClick={() => router.push(`/openings/${job.id}`)}
                     >
+                        <AiOutlineStar className="absolute top-10 right-10" size={26} />
                         <p className="text-3xl">{job.data()["title"]}</p>
                         <p className="text-xl">{job.data()["description"]}</p>
                         <p className="text-2xl">
