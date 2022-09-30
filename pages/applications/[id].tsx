@@ -15,16 +15,19 @@ function Applications() {
     const [application] = useDocument(doc(db, `applications/${id}`));
     const accept = async () => {
         await addDoc(collection(db, `notifications`), {
-            email: application?.data()?.['email'],
+            email: application?.data()?.["email"],
             jobID: application?.data()?.["opening"],
         });
         alert(
             "Employee selected. Now you can chat with the employee in the 'Chats' section."
         );
         await deleteDoc(doc(db, `applications/${id}`));
-        router.push('/')
+        router.push("/");
     };
-    const reject = () => {};
+    const reject = async () => {
+        await deleteDoc(doc(db, `applications/${id}`));
+        router.push("/");
+    };
     return (
         <div>
             <Head>

@@ -15,7 +15,7 @@ const Home: NextPage = ({ loggedIn, userType }: any) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Layout title="technight">
+            <Layout title="ExSolution">
                 {loggedIn ? <Dashboard type={userType} /> : <Landing />}
             </Layout>
         </div>
@@ -31,18 +31,18 @@ export async function getServerSideProps(context: any) {
         if (session) {
             const docRef = doc(db, `users/${session.user?.email}`);
             const userType = (await getDoc(docRef)).data()?.type;
-            if(!userType) {
+            if (!userType) {
                 return {
                     redirect: {
-                        destination: '/auth/filldetails',
+                        destination: "/auth/filldetails",
                         permanent: false,
-                    }
-                }
+                    },
+                };
             }
             return {
                 props: {
                     loggedIn: true,
-                    userType
+                    userType,
                 },
             };
         }
