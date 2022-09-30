@@ -6,6 +6,7 @@ import { Button, TextField } from "@mui/material";
 import { AiOutlineSend } from "react-icons/ai";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../serverless/firebase";
+
 function Opening() {
     const [name, setName] = useState("");
     const [mn, setMn] = useState("");
@@ -19,7 +20,9 @@ function Opening() {
     const submitForm = async (e: any) => {
         e.preventDefault();
         console.log(router.query.id);
-        await addDoc(collection(db, `jobs/${router.query.id}/applications`), {
+        await addDoc(collection(db, `applications`), {
+            opening: router.query.id,
+            email: session?.user?.email || "a",
             name,
             mn,
             pr,

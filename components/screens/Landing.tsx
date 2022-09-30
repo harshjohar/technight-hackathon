@@ -10,8 +10,8 @@ function Landing() {
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <Link href="/" className="flex items-center">
                             <img
-                                src="https://flowbite.com/docs/images/logo.svg"
-                                className="mr-3 h-6 sm:h-9"
+                                src="logo.png"
+                                className="mr-3 h-10 sm:h-9"
                                 alt="Logo"
                             />
                             {/* <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Exsolution</span> */}
@@ -32,12 +32,10 @@ function Landing() {
                 <div className="grid py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                     <div className="place-self-center mr-auto lg:col-span-7">
                         <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
-                            Payments tool for software companies
+                            Leading Labor to Jobs Nationwide
                         </h1>
                         <p className="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                            From checkout to global sales tax compliance,
-                            companies around the world use Flowbite to simplify
-                            their payment stack.
+                            The best online job portal connecting laborers and contractors throughout India.
                         </p>
                         <button
                             className="inline-flex justify-center items-center py-3 px-5 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"

@@ -2,9 +2,15 @@ import { Button } from "@mui/material";
 import Link from "next/link";
 import React, { useState } from "react";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function Nav() {
     const [open, setOpen] = useState(false);
+    const router = useRouter();
+    const signout = () => {
+        signOut()
+        router.push('/')
+    }
     return (
         <div>
             <nav className="bg-gray-200">
@@ -13,8 +19,8 @@ function Nav() {
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 <img
-                                    className="h-8 w-8"
-                                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                                    className="h-12 object-contain"
+                                    src="/logo.png"
                                     alt="Workflow"
                                 />
                             </div>
@@ -47,7 +53,7 @@ function Nav() {
                                     >
                                         Profile
                                     </Link>
-                                    <Button onClick={() => signOut()}>
+                                    <Button onClick={() => signout()}>
                                         Signout
                                     </Button>
                                 </div>

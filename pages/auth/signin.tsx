@@ -12,13 +12,13 @@ export default function Login({ providers, callbackUrl }: any) {
             </Head>
             <div className="flex flex-col items-center space-y-5">
                 <img
-                    src="/assets/images/logo.png"
+                    src="/logo.png"
                     alt="Technight"
                     className="w-32 h-32"
                 />
                 <div className="text-3xl">
                     <p className="inline"> Sign in to </p>
-                    <p className="font-bold text-primary inline">TechNight</p>
+                    <p className="font-bold text-primary inline">ExSolution</p>
                 </div>
             </div>
             <div className="p-5 flex flex-col space-y-5">
