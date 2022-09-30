@@ -17,7 +17,7 @@ function Labourer() {
                 return (
                     <div
                         className="shadow-md w-full rounded-md p-8 hover:shadow-2xl cursor-pointer bg-blue-100"
-                        onClick={() => router.push(`/jobs/${job.id}`)}
+                        onClick={() => router.push(`/openings/${job.id}`)}
                     >
                         <p className="text-3xl">{job.data()["title"]}</p>
                         <p className="text-xl">{job.data()["description"]}</p>
