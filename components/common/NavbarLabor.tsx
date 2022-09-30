@@ -1,3 +1,5 @@
+import { Button } from "@mui/material";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -52,6 +54,7 @@ function Nav() {
                                     >
                                         Starred
                                     </Link>
+                                    <Button onClick={() => signOut()}>Signout</Button>
                                 </div>
                             </div>
                         </div>
@@ -140,6 +143,7 @@ function Nav() {
                         >
                             <p className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Starred</p>
                         </Link>
+                        <Button onClick={() => signOut()}>Signout</Button>
                     </div>
                 </div>
             </nav>

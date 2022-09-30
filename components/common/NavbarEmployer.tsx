@@ -1,5 +1,7 @@
+import { Button } from "@mui/material";
 import Link from "next/link";
 import React, { useState } from "react";
+import { signOut } from "next-auth/react";
 
 function Nav() {
     const [open, setOpen] = useState(false);
@@ -52,6 +54,7 @@ function Nav() {
                                     >
                                         Profile
                                     </Link>
+                                    <Button onClick={() => signOut()}>Signout</Button>
                                 </div>
                             </div>
                         </div>
@@ -150,6 +153,7 @@ function Nav() {
                                 Profile
                             </p>
                         </Link>
+                        <Button onClick={() => signOut()}>Signout</Button>
                     </div>
                 </div>
             </nav>
