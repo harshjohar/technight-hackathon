@@ -11,9 +11,8 @@ function registercontractor() {
     const [name, setName] = useState("");
     const [place, setPlace] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [skills, setSkills] = useState("");
-    const [preferredLang, setPreferredLang] = useState("");
-    const [education, setEducation] = useState("");
+    const [company, setCompany] = useState("");
+    const [about, setAbout] = useState("");
 
     const { data: session } = useSession();
     const router = useRouter();
@@ -24,10 +23,8 @@ function registercontractor() {
             type: "employer",
             name: name,
             place: place,
-            skills: skills,
-            preferredLang: preferredLang,
-            education: education,
-            openForWork: false,
+            about,
+            company,
         });
         router.push("/");
     };
@@ -63,22 +60,16 @@ function registercontractor() {
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <TextField
-                    label="Skills"
+                    label="Company"
                     variant="outlined"
-                    value={skills}
-                    onChange={(e) => setSkills(e.target.value)}
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
                 />
                 <TextField
-                    label="Preferred Language"
+                    label="About Company"
                     variant="outlined"
-                    value={preferredLang}
-                    onChange={(e) => setPreferredLang(e.target.value)}
-                />
-                <TextField
-                    label="Education"
-                    variant="outlined"
-                    value={education}
-                    onChange={(e) => setEducation(e.target.value)}
+                    value={about}
+                    onChange={(e) => setAbout(e.target.value)}
                 />
                 <Button
                     variant="outlined"

@@ -1,10 +1,16 @@
 import { Button } from "@mui/material";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 function Nav() {
     const [open, setOpen] = useState(false);
+    const router = useRouter();
+    const signout = () => {
+        signOut();
+        router.push("/");
+    };
     return (
         <div>
             <nav className="bg-gray-200">
@@ -49,7 +55,7 @@ function Nav() {
                                     >
                                         Starred
                                     </Link>
-                                    <Button onClick={() => signOut()}>
+                                    <Button onClick={() => signout()}>
                                         Signout
                                     </Button>
                                 </div>

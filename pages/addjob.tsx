@@ -72,7 +72,7 @@ function addjob() {
                     onChange={(e) => setPay(e.target.value)}
                 />
                 <TextField
-                    label="Work Environment"
+                    label="Work Timings"
                     variant="outlined"
                     value={we}
                     onChange={(e) => setWe(e.target.value)}

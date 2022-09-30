@@ -67,7 +67,7 @@ function Opening() {
                         onChange={(e) => setPr(e.target.value)}
                     />
                     <TextField
-                        label="ID card"
+                        label="ID proof"
                         variant="outlined"
                         value={id}
                         onChange={(e) => setId(e.target.value)}
