@@ -46,7 +46,6 @@ function registerlabor() {
             </Head>
             <h1 className="text-5xl text-center">Enter your details</h1>
             <h2 className="text-center text-3xl">Labor registration form</h2>
-            <Button onClick={() => signout()}>Signout</Button>
             <form
                 className="flex flex-col space-y-4 w-[80%] mx-auto"
                 onSubmit={submitForm}

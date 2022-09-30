@@ -8,7 +8,7 @@ type layout = {
 };
 function Layout({ title, children }: layout) {
     return (
-        <div className="h-screen w-screen overflow-hidden">
+        <div className="h-screen w-screen">
             <Head>
                 <title>{title}</title>
                 <link rel="icon" href="/assets/favicon/favicon.ico" />

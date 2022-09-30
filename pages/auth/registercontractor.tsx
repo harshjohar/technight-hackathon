@@ -36,7 +36,6 @@ function registercontractor() {
             </Head>
             <h1 className="text-5xl text-center">Enter your details</h1>
             <h2 className="text-center text-3xl">Employer registration form</h2>
-            <Button onClick={() => signOut(auth)}>Signout</Button>
             <form
                 className="flex flex-col space-y-4 w-[80%] mx-auto"
                 onSubmit={submitForm}

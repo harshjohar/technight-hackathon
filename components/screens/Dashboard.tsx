@@ -6,7 +6,7 @@ import Labourer from "./Labourer";
 
 function Dashboard({ type }: { type: string }) {
     return (
-        <div>
+        <div className=" overflow-y-scroll">
             {type == "employer" ? <NavbarEmployer /> : <NavbarLabor />}
             {type == "employer" ? <Employer /> : <Labourer />}
         </div>
