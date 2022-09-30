@@ -35,13 +35,6 @@ function Nav() {
                                     </Link>
 
                                     <Link
-                                        href="/jobs"
-                                        className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Jobs
-                                    </Link>
-
-                                    <Link
                                         href="/addjob"
                                         className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
@@ -54,7 +47,9 @@ function Nav() {
                                     >
                                         Profile
                                     </Link>
-                                    <Button onClick={() => signOut()}>Signout</Button>
+                                    <Button onClick={() => signOut()}>
+                                        Signout
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -124,15 +119,6 @@ function Nav() {
                         >
                             <p className="hover:bg-gray-700 hover:text-white text-gray-900 block px-3 py-2 rounded-md text-base font-medium">
                                 Chats
-                            </p>
-                        </Link>
-
-                        <Link
-                            href="/jobs"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        >
-                            <p className="hover:bg-gray-700 hover:text-white text-gray-900 block px-3 py-2 rounded-md text-base font-medium">
-                                Jobs
                             </p>
                         </Link>
 
