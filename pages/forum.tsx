@@ -1,10 +1,9 @@
-import { Avatar, Button, TextField } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { addDoc, collection, orderBy, query, serverTimestamp } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Nav from "../components/common/NavbarLabor";
 import { db } from "../serverless/firebase";
-import { IoIosAddCircle } from "react-icons/io";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 function Forum() {
@@ -66,7 +65,7 @@ const Messages = () => {
     return (
         <div className="h-[80%] overflow-scroll">
             {messages?.docs?.map((message) => {
-                return <div className="flex hover:bg-fabchat-hoverPrimary py-2 items-center relative">
+                return <div className="flex hover:bg-gray-100 py-2 items-center relative">
                 <div className="flex flex-col items-start justify-start p-2 cursor-pointer">
                     {message.data()?.photoUrl ? (
                         <Image

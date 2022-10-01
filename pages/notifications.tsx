@@ -14,7 +14,7 @@ function notifications() {
                 <title>Notifications</title>
                 <link rel="icon" href="/assets/favicon/favicon.ico" />
             </Head>
-            <div className="w-[60%] mx-auto">
+            <div className="w-[80%] mx-auto">
                 <h1 className="text-4xl">Notifications</h1>
                 {notifs?.docs.map((notif) => {
                     return (
