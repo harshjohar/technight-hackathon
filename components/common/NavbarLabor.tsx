@@ -19,15 +19,21 @@ function Nav() {
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 <Link href={"/"}>
-                                    <img
-                                        className="h-10 object-contain cursor-pointer"
-                                        src="/logo.png"
-                                        alt="Workflow"
-                                    />
+                                    <>
+                                        <img
+                                            className="h-10 object-contain cursor-pointer"
+                                            src="/logo.png"
+                                            alt="Workflow"
+                                        />
+                                        <span>ExSolution</span>
+                                    </>
                                 </Link>
                             </div>
                             <div className="hidden md:block">
-                                <div className="ml-10 flex items-baseline space-x-4">
+                                <div className="ml-10 flex items-baseline space-x-4 ">
+                                    <span className="absolute top-5 right-5">
+                                        Worker
+                                    </span>
                                     <Link
                                         href="/chats"
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
