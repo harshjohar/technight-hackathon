@@ -49,10 +49,10 @@ function Nav() {
                                     </Link>
 
                                     <Link
-                                        href="/profile"
+                                        href="/forum"
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Profile
+                                        Forum
                                     </Link>
 
                                     <Link

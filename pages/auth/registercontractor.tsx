@@ -41,30 +41,35 @@ function registercontractor() {
                 onSubmit={submitForm}
             >
                 <TextField
+                    required={true}
                     label="Name"
                     variant="outlined"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Place"
                     variant="outlined"
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Phone Number"
                     variant="outlined"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Company"
                     variant="outlined"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="About Company"
                     variant="outlined"
                     value={about}

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { db } from "../../serverless/firebase";
-import {useSession} from 'next-auth/react';
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 
 function registerlabor() {
@@ -17,7 +17,7 @@ function registerlabor() {
     const [preferredLang, setPreferredLang] = useState("");
     const [education, setEducation] = useState("");
 
-    const {data: session} = useSession();
+    const { data: session } = useSession();
 
     const submitForm = async (e: any) => {
         e.preventDefault();
@@ -29,14 +29,14 @@ function registerlabor() {
             skills: skills,
             preferredLang: preferredLang,
             education: education,
-            openForWork: false
+            openForWork: false,
         });
         router.push("/");
     };
     const signout = () => {
         signOut();
-        router.push('/')
-    }
+        router.push("/");
+    };
 
     return (
         <div className="w-screen h-screen space-y-6">
@@ -51,36 +51,42 @@ function registerlabor() {
                 onSubmit={submitForm}
             >
                 <TextField
+                    required={true}
                     label="Name"
                     variant="outlined"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Place"
                     variant="outlined"
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Phone Number"
                     variant="outlined"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Skills"
                     variant="outlined"
                     value={skills}
                     onChange={(e) => setSkills(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Preferred Language"
                     variant="outlined"
                     value={preferredLang}
                     onChange={(e) => setPreferredLang(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Education"
                     variant="outlined"
                     value={education}

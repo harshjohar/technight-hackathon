@@ -29,7 +29,7 @@ function addjob() {
             skillsReq: skillsReq,
             vacancy: vacancy,
             employer: session?.user?.email,
-            timestamp: serverTimestamp()
+            timestamp: serverTimestamp(),
         });
         router.push("/");
     };
@@ -48,42 +48,49 @@ function addjob() {
                 onSubmit={submitForm}
             >
                 <TextField
+                    required={true}
                     label="Job Title"
                     variant="outlined"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Job Description"
                     variant="outlined"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Job Place"
                     variant="outlined"
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Job Pay"
                     variant="outlined"
                     value={pay}
                     onChange={(e) => setPay(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Work Timings"
                     variant="outlined"
                     value={we}
                     onChange={(e) => setWe(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Skills Required"
                     variant="outlined"
                     value={skillsReq}
                     onChange={(e) => setSkillsReq(e.target.value)}
                 />
                 <TextField
+                    required={true}
                     label="Vacancy"
                     variant="outlined"
                     value={vacancy}

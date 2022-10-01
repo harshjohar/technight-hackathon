@@ -31,8 +31,8 @@ function Opening() {
             pe,
             skills,
         });
-        alert(`Applied for job with ID: ${router.query.id}`)
-        router.push('/');
+        alert(`Applied for job with ID: ${router.query.id}`);
+        router.push("/");
     };
     return (
         <div>
@@ -49,36 +49,42 @@ function Opening() {
                     onSubmit={submitForm}
                 >
                     <TextField
+                        required={true}
                         label="Name"
                         variant="outlined"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                     <TextField
+                        required={true}
                         label="Mobile Number"
                         variant="outlined"
                         value={mn}
                         onChange={(e) => setMn(e.target.value)}
                     />
                     <TextField
+                        required={true}
                         label="Place of Residence"
                         variant="outlined"
                         value={pr}
                         onChange={(e) => setPr(e.target.value)}
                     />
                     <TextField
+                        required={true}
                         label="ID proof"
                         variant="outlined"
                         value={id}
                         onChange={(e) => setId(e.target.value)}
                     />
                     <TextField
+                        required={true}
                         label="Previous Experience"
                         variant="outlined"
                         value={pe}
                         onChange={(e) => setPe(e.target.value)}
                     />
                     <TextField
+                        required={true}
                         label="Skills"
                         variant="outlined"
                         value={skills}
