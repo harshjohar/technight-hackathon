@@ -21,8 +21,8 @@ const Home: NextPage = ({ loggedIn, userType }: any) => {
         </div>
     );
 };
-
 export default Home;
+
 
 export async function getServerSideProps(context: any) {
     try {
