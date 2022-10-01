@@ -3,6 +3,9 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../redux/hooks";
+import { languageSelect, toggle } from "../../redux/languageSlice";
 
 function Nav() {
     const [open, setOpen] = useState(false);
@@ -11,8 +14,25 @@ function Nav() {
         signOut();
         router.push("/");
     };
+    const dispatch = useDispatch();
+    const selectedLanguage = useAppSelector(languageSelect);
     return (
         <div>
+            {selectedLanguage == "en" ? (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        भाषा बदलो
+                    </button>
+                ) : (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        Change Language
+                    </button>
+                )}
             <nav className="bg-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">

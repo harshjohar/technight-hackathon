@@ -2,8 +2,14 @@ import React from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import Head from "next/head";
+import { useAppSelector } from "../../redux/hooks";
+import { languageSelect, toggle } from "../../redux/languageSlice";
+import { useDispatch } from "react-redux";
+import { en, hi } from "../../config/config";
 
 function Landing() {
+    const selectedLanguage = useAppSelector(languageSelect);
+    const dispatch = useDispatch();
     return (
         <>
             <Head>
@@ -11,6 +17,21 @@ function Landing() {
                 <link rel="icon" href="/assets/favicon/favicon.ico" />
             </Head>
             <header>
+                {selectedLanguage == "en" ? (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        भाषा बदलो
+                    </button>
+                ) : (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        Change Language
+                    </button>
+                )}
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <Link href="/" className="flex items-center">
@@ -30,7 +51,9 @@ function Landing() {
                                 className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
                                 onClick={() => signIn()}
                             >
-                                Log in
+                                {selectedLanguage == "en"
+                                    ? en.landing.login
+                                    : hi.landing.login}
                             </button>
                         </div>
                     </div>
@@ -41,17 +64,22 @@ function Landing() {
                 <div className="grid py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                     <div className="place-self-center mr-auto lg:col-span-7">
                         <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
-                            Leading Labor to Jobs Nationwide
+                            {selectedLanguage == "en"
+                                ? en.landing.title
+                                : hi.landing.title}
                         </h1>
                         <p className="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                            The best online job portal connecting laborers and
-                            contractors throughout India.
+                            {selectedLanguage == "en"
+                                ? en.landing.subTitle
+                                : hi.landing.subTitle}
                         </p>
                         <button
                             className="inline-flex justify-center items-center py-3 px-5 mr-3 text-base font-medium text-center dark:text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                             onClick={() => signIn()}
                         >
-                            Get started
+                            {selectedLanguage == "en"
+                                    ? en.landing.getStarted
+                                    : hi.landing.getStarted}
                             <svg
                                 className="ml-2 -mr-1 w-5 h-5"
                                 fill="currentColor"

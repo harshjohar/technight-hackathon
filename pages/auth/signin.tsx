@@ -3,10 +3,31 @@ import { SiGoogle } from "react-icons/si";
 import Head from "next/head";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../serverless/firebase";
+import { useAppSelector } from "../../redux/hooks";
+import { languageSelect, toggle } from "../../redux/languageSlice";
+import { useDispatch } from "react-redux";
+import { en, hi } from "../../config/config";
 
 export default function Login({ providers, callbackUrl }: any) {
+    const selectedLanguage = useAppSelector(languageSelect);
+    const dispatch = useDispatch();
     return (
         <main className="flex flex-col items-center h-screen space-y-8 justify-center text-black bg-gray-900">
+           {selectedLanguage == "en" ? (
+                    <button
+                        className="bottom-5 right-10 absolute text-white"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        भाषा बदलो
+                    </button>
+                ) : (
+                    <button
+                        className="bottom-5 right-10 absolute text-white"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        Change Language
+                    </button>
+                )}
             <Head>
                 <title>Sign In | TechNight</title>
             </Head>
@@ -17,8 +38,7 @@ export default function Login({ providers, callbackUrl }: any) {
                     className="h-32 object-contain"
                 />
                 <div className="text-3xl text-white">
-                    <p className="inline"> Sign in to </p>
-                    <p className="font-bold text-primary inline">ExSolution</p>
+                    <p className="inline"> {selectedLanguage=='en'?en.googleLogIn.signin:hi.googleLogIn.signin}</p>
                 </div>
             </div>
             <div className="p-5 flex flex-col space-y-5">

@@ -4,14 +4,34 @@ import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../serverless/firebase";
 import {AiOutlineStar} from 'react-icons/ai';
+import { useAppSelector } from "../../redux/hooks";
+import { languageSelect, toggle } from "../../redux/languageSlice";
+import { useDispatch } from "react-redux";
 function Labourer() {
     const [jobs] = useCollection(
         query(collection(db, "jobs"), orderBy("timestamp"))
     );
     const router = useRouter();
+    const selectedLanguage = useAppSelector(languageSelect);
+    const dispatch = useDispatch();
     return (
         <div className="space-y-6 w-[80%] mx-auto p-10">
             <h1 className="text-3xl">Job openings</h1>
+            {selectedLanguage == "en" ? (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        भाषा बदलो
+                    </button>
+                ) : (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        Change Language
+                    </button>
+                )}
             {jobs?.docs?.map((job) => {
                 return (
                     <div
