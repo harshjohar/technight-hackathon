@@ -10,7 +10,7 @@ function Job() {
     const [applications] = useCollection(
         query(
             collection(db, `applications`),
-            where("opening", "==", router.query.id)
+            where("opening", "==", router.query.id || "a")
         )
     );
     return (
