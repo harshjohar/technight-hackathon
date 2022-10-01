@@ -18,4 +18,5 @@ function Layout({ title, children }: layout) {
     );
 }
 
+
 export default Layout;
