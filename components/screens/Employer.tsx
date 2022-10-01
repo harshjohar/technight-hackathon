@@ -19,7 +19,7 @@ function Employer() {
     );
     const router = useRouter();
     return (
-        <div className="space-y-6 w-[60%] mx-auto p-10 ">
+        <div className="space-y-6 w-[80%] mx-auto p-10 ">
             <h1 className="text-3xl">Posted Jobs</h1>
             {jobs?.docs?.map((job) => {
                 return (

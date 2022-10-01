@@ -35,7 +35,7 @@ function Applications() {
                 <link rel="icon" href="/assets/favicon/favicon.ico" />
             </Head>
             <NavbarEmployer />
-            <div className="shadow-lg w-[60%] mx-auto p-10">
+            <div className="shadow-lg w-[80%] mx-auto p-10">
                 <p>{application?.data()?.["name"]}</p>
                 <p>{application?.data()?.["skills"]}</p>
                 <p>{application?.data()?.["pr"]}</p>

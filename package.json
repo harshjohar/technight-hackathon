@@ -11,6 +11,7 @@
     "@headlessui/react": "^1.7.3",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.7",
+    "@reduxjs/toolkit": "^1.8.5",
     "antd": "^4.23.3",
     "firebase": "^9.10.0",
     "next": "latest",
@@ -18,7 +19,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-firebase-hooks": "^5.0.3",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.4"
   },
   "devDependencies": {
     "@types/node": "17.0.35",

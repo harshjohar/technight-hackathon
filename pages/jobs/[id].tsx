@@ -20,7 +20,7 @@ function Job() {
                 <link rel="icon" href="/assets/favicon/favicon.ico" />
             </Head>
             <NavbarEmployer />
-            <div className="space-y-6 w-[60%] mx-auto p-10 ">
+            <div className="space-y-6 w-[80%] mx-auto p-10 ">
                 <h1 className="text-3xl">Posted Applications</h1>
                 {applications?.docs.length === 0 && (
                     <p>No Applications for now.</p>

@@ -19,14 +19,15 @@ function Nav() {
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 <Link href={"/"}>
-                                    <>
+                                    <div>
                                         <img
                                             className="h-12 object-contain cursor-pointer"
                                             src="/logo.png"
                                             alt="Workflow"
+                                            onClick={()=>router.push('/')}
                                         />
                                         <span>ExSolution</span>
-                                    </>
+                                    </div>
                                 </Link>
                             </div>
                             <div className="hidden md:block">
