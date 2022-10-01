@@ -41,7 +41,7 @@ function addjob() {
             </Head>
             <h1 className="text-5xl text-center">Add Job</h1>
             <h2 className="text-center text-3xl">
-                Add details of the job offered
+                Add details of the job being offered
             </h2>
             <form
                 className="flex flex-col space-y-4 w-[80%] mx-auto"
