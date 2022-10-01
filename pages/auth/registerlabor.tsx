@@ -7,6 +7,10 @@ import { AiOutlineSend } from "react-icons/ai";
 import { db } from "../../serverless/firebase";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import { useAppSelector } from "../../redux/hooks";
+import { languageSelect, toggle } from "../../redux/languageSlice";
+import { useDispatch } from "react-redux";
+import { en, hi } from "../../config/config";
 
 function registerlabor() {
     const router = useRouter();
@@ -37,57 +41,73 @@ function registerlabor() {
         signOut();
         router.push("/");
     };
-
+    const selectedLanguage = useAppSelector(languageSelect);
+    const dispatch = useDispatch();
     return (
         <div className="w-screen h-screen space-y-6">
             <Head>
                 <title>Register</title>
                 <link rel="icon" href="/assets/favicon/favicon.ico" />
             </Head>
-            <h1 className="text-5xl text-center">Enter your details</h1>
-            <h2 className="text-center text-3xl">Labor registration form</h2>
+            {selectedLanguage == "en" ? (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        भाषा बदलो
+                    </button>
+                ) : (
+                    <button
+                        className="bottom-5 right-10 absolute"
+                        onClick={() => dispatch(toggle())}
+                    >
+                        Change Language
+                    </button>
+            )}
+            <h1 className="text-5xl text-center">{selectedLanguage == 'en'? en.labRegPage.title: hi.labRegPage.title}</h1>
+            <h2 className="text-center text-3xl">{selectedLanguage == 'en'? en.labRegPage.subTitle: hi.labRegPage.subTitle}</h2>
             <form
                 className="flex flex-col space-y-4 w-[80%] mx-auto"
                 onSubmit={submitForm}
             >
                 <TextField
                     required={true}
-                    label="Name"
+                    label={selectedLanguage == 'en'? en.labRegPage.nameField: hi.labRegPage.nameField}
                     variant="outlined"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
                 <TextField
                     required={true}
-                    label="Place"
+                    label={selectedLanguage == 'en'? en.labRegPage.cityField: hi.labRegPage.cityField}
                     variant="outlined"
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                 />
                 <TextField
                     required={true}
-                    label="Phone Number"
+                    label={selectedLanguage == 'en'? en.labRegPage.phoneField: hi.labRegPage.phoneField}
                     variant="outlined"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <TextField
                     required={true}
-                    label="Skills"
+                    label={selectedLanguage == 'en'? en.labRegPage.skillsField: hi.labRegPage.skillsField}
                     variant="outlined"
                     value={skills}
                     onChange={(e) => setSkills(e.target.value)}
                 />
                 <TextField
                     required={true}
-                    label="Preferred Language"
+                    label={selectedLanguage == 'en'? en.labRegPage.langField: hi.labRegPage.langField}
                     variant="outlined"
                     value={preferredLang}
                     onChange={(e) => setPreferredLang(e.target.value)}
                 />
                 <TextField
                     required={true}
-                    label="Education"
+                    label={selectedLanguage == 'en'? en.labRegPage.eduField: hi.labRegPage.eduField}
                     variant="outlined"
                     value={education}
                     onChange={(e) => setEducation(e.target.value)}
@@ -97,7 +117,7 @@ function registerlabor() {
                     endIcon={<AiOutlineSend />}
                     type="submit"
                 >
-                    Submit
+                    {selectedLanguage == 'en'? en.labRegPage.button: hi.labRegPage.button}
                 </Button>
             </form>
         </div>

@@ -19,14 +19,14 @@ function Landing() {
             <header>
                 {selectedLanguage == "en" ? (
                     <button
-                        className="bottom-5 right-10 absolute"
+                        className="bottom-5 right-10 absolute text-white"
                         onClick={() => dispatch(toggle())}
                     >
                         भाषा बदलो
                     </button>
                 ) : (
                     <button
-                        className="bottom-5 right-10 absolute"
+                        className="bottom-5 right-10 absolute text-white"
                         onClick={() => dispatch(toggle())}
                     >
                         Change Language

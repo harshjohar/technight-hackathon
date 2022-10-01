@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { en, hi } from "../../config/config";
 import { useAppSelector } from "../../redux/hooks";
 import { languageSelect, toggle } from "../../redux/languageSlice";
 
@@ -53,37 +54,37 @@ function Nav() {
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4 ">
                                     <span className="absolute top-5 right-5">
-                                        Worker
+                                        {selectedLanguage=='en'?en.labDashboard.labLabel:hi.labDashboard.labLabel}
                                     </span>
                                     <Link
                                         href="/chats"
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Chats
+                                        >
+                                        {selectedLanguage=='en'?en.labDashboard.labNavChat:hi.labDashboard.labNavChat}
                                     </Link>
 
                                     <Link
                                         href="/notifications"
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Notifications
+                                        >
+                                        {selectedLanguage=='en'?en.labDashboard.labNot:hi.labDashboard.labNot}
                                     </Link>
 
                                     <Link
                                         href="/forum"
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Forum
+                                        >
+                                        {selectedLanguage=='en'?en.labDashboard.labForum:hi.labDashboard.labForum}
                                     </Link>
 
                                     <Link
                                         href="/starred"
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Starred
+                                        >
+                                        {selectedLanguage=='en'?en.labDashboard.labStarred:hi.labDashboard.labStarred}
                                     </Link>
                                     <Button onClick={() => signout()}>
-                                        Signout
+                                        {selectedLanguage=='en'?en.labDashboard.labSignout:hi.labDashboard.labSignout}
                                     </Button>
                                 </div>
                             </div>
@@ -95,7 +96,7 @@ function Nav() {
                                 aria-controls="mobile-menu"
                                 aria-expanded="false"
                                 onClick={() => setOpen(!open)}
-                            >
+                                >
                                 <span className="sr-only">Open main menu</span>
 
                                 <svg
@@ -105,13 +106,13 @@ function Nav() {
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                     aria-hidden="true"
-                                >
+                                    >
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16"
-                                    />
+                                        />
                                 </svg>
 
                                 <svg
@@ -121,13 +122,13 @@ function Nav() {
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                     aria-hidden="true"
-                                >
+                                    >
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12"
-                                    />
+                                        />
                                 </svg>
                             </button>
                         </div>
@@ -137,44 +138,46 @@ function Nav() {
                 <div
                     className={`md:hidden ${open ? "block" : "hidden"}`}
                     id="mobile-menu"
-                >
+                    >
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <Link
                             href="/chats"
                             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        >
+                            >
                             <p className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                                Chats
+                                {selectedLanguage=='en'?en.labDashboard.labNavChat:hi.labDashboard.labNavChat}
                             </p>
                         </Link>
 
                         <Link
                             href="/notifications"
                             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        >
+                            >
                             <p className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                                Notifications
+                            {selectedLanguage=='en'?en.labDashboard.labNot:hi.labDashboard.labNot}
                             </p>
                         </Link>
 
                         <Link
-                            href="/profile"
+                            href="/forum"
                             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        >
+                            >
                             <p className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                                Profile
+                            {selectedLanguage=='en'?en.labDashboard.labForum:hi.labDashboard.labForum}
                             </p>
                         </Link>
 
                         <Link
                             href="/starred"
                             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        >
+                            >
                             <p className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                                Starred
+                            {selectedLanguage=='en'?en.labDashboard.labStarred:hi.labDashboard.labStarred}
                             </p>
                         </Link>
-                        <Button onClick={() => signOut()}>Signout</Button>
+                        <Button onClick={() => signOut()}>
+                            {selectedLanguage=='en'?en.labDashboard.labSignout:hi.labDashboard.labSignout}
+                        </Button>
                     </div>
                 </div>
             </nav>

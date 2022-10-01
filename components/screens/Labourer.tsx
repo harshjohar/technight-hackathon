@@ -7,6 +7,7 @@ import {AiOutlineStar} from 'react-icons/ai';
 import { useAppSelector } from "../../redux/hooks";
 import { languageSelect, toggle } from "../../redux/languageSlice";
 import { useDispatch } from "react-redux";
+import { en, hi } from "../../config/config";
 function Labourer() {
     const [jobs] = useCollection(
         query(collection(db, "jobs"), orderBy("timestamp"))
@@ -16,7 +17,9 @@ function Labourer() {
     const dispatch = useDispatch();
     return (
         <div className="space-y-6 w-[80%] mx-auto p-10">
-            <h1 className="text-3xl">Job openings</h1>
+            <h1 className="text-3xl">
+                {selectedLanguage=='en'? en.labDashboard.labTitle:hi.labDashboard.labTitle}
+            </h1>
             {selectedLanguage == "en" ? (
                     <button
                         className="bottom-5 right-10 absolute"
