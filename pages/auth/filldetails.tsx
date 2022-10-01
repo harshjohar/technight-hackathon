@@ -17,6 +17,9 @@ function filldetails() {
             <Button onClick={() => router.push("/auth/registerlabor")}>
                 I M a Labourer
             </Button>
+            <Button onClick={() => router.push("/auth/trainer")}>
+                I M a trainer
+            </Button>
         </div>
     );
 }
