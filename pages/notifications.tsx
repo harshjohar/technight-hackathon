@@ -22,7 +22,7 @@ function notifications() {
                             <div className="shadow-lg py-10">
                                 <p>
                                     You are selected with job ID {notif.data()["jobID"]}.
-                                    Congrats! Now you can chat with the
+                                    Congrats! Now you can chat with your
                                     employer.
                                 </p>
                             </div>
